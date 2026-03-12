@@ -1,5 +1,7 @@
 <?php 
     namespace Projeto\model;//Determinando o local do arquivo Pessoa
+    require_once('Endereco.php');
+    use Projeto\model\Endereco;
 
     class Pessoa{
         //public - Todo mundo visualiza
@@ -10,20 +12,11 @@
         private string $nome;
         private float $cpf;
         private string $telefone;
-        private string $endereco;
-        private boolean $status;//true e false
+        private Endereco $endereco;
+        private bool $status;//true e false
 
-        //Primeiro grande método de qualquer classe
-        public function __construct(){
-            $this->codigo   = 0;//Instaciando
-            $this->nome     = "";
-            $this->cpf      = 0;
-            $this->telefone = "";
-            $this->endereco = "";
-            $this->status   = true;
-        }//fim do método construtor
-
-        public function __construct(int $codigo, string $nome, float $cpf, string $telefone, string $endereco, boolen $status)
+       
+        public function __construct(int $codigo, string $nome, float $cpf, string $telefone, Endereco $endereco, bool $status)
 
         {
             $this->codigo    = $codigo;
@@ -52,7 +45,7 @@
                    "<br>Nome: ".$this->nome.
                    "<br>CPF: ".$this->cpf.
                    "<br>Telefone: ".$this->telefone.
-                   "<br>Endereço: ".$this->endereco.
+                   "<br>Endereço: ".$this->endereco->imprimir().
                    "<br>Status: ".$this->status;
 
         }//fim do método

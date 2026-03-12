@@ -1,38 +1,25 @@
-<?php 
+<?php
     namespace Projeto\view;
-    require_once("../model/Pessoa.php");//Chamando o arquivo
+    require_once("../model/Pessoa.php");
     require_once("../model/Endereco.php");
-    use Projeto\model\Pessoa;//Chamando a classe que está no arquivo pessoa.php
+    use Projeto\model\Pessoa;
     use Projeto\model\Endereco;
-    //Instanciar uma variável da classe pessoa
-   
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Pessoa</title>
+    <title>Cadastrar Endereço</title>
 </head>
 <body>
-    <h1>Cadastrar Cliente</h1>
+    <h1>Cadastrar Endereço</h1>
     <br><br>
+    <form method="POST">
     <form method="POST">
         <label>Código: </label>
         <input type="number" name="codigo" id="codigo"/>
-        <br><br>
-        <label>Nome: </label>
-        <input type="text" name="nome" id="nome"/>
-        <br><br>
-        <label>CPF: </label>
-        <input type="number" name="cpf" id="cpf"/>
-        <br><br>
-        <label>Telefone: </label>
-        <input type="text" name="telefone" id="telefone"/>
-        <br><br>
-        <label>Status: </label>
-        <input type="text" name="status" id="status"/>
         <br><br>
         <label>Logradouro: </label>
         <input type="text" name="logradouro" id="logradouro"/>
@@ -59,14 +46,10 @@
         <input type="text" name="pais" id="pais"/>
         <br><br>
 
-        <button type="submit">Cadastrar
+        <button type="submit">Achar
             <?php
-                try{
+                
                     $codigo   = $_POST['codigo'];
-                    $nome     = $_POST['nome'];
-                    $cpf      = $_POST['cpf'];
-                    $telefone = $_POST['telefone'];
-                    $status   = $_POST['status'];
                     $logradouro    = $_POST['logradouro'];
                     $numero      = $_POST['numero'];
                     $bairro = $_POST['bairro'];
@@ -76,24 +59,22 @@
                     $estado = $_POST['estado'];
                     $pais = $_POST['pais'];
 
-
-                    //Agora vou trazer os dados do formulario 
-                    $endereco = new Endereco($codigo,$logradouro,$numero,$bairro,$cep,$complemento,$cidade,$estado,$pais);
-
-
-                    $pessoa = new Pessoa($codigo,$nome,$cpf,$telefone,$endereco,$status);
-                }catch(Except $erro){
-                    echo "Algo deu errado!!! <br><br> $erro";
-                }
+                    //Instanciar a variável pessoa com dados
+                    $endereco = new Endereco($codigo,$logradouro,$numero,$bairro,$cep,$complemento, $cidade, $estado, $pais);
+                
+                
+                   
+               
 
             ?>
         </button><br>
         <?php 
-             echo $pessoa->imprimir();
+             echo $endereco->imprimir();
         ?>
 
     </form>
     <button><a href="index.php">Voltar</a></button>
+    
         
     
 </body>
